@@ -1,5 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Unique} from "typeorm";
 import {IsNotEmpty, Length} from "class-validator";
+import * as bcrypt from "bcryptjs";
 
 @Entity()
 @Unique(["username"])
@@ -15,19 +16,39 @@ export class User {
     @Length(8, 100)
     password: string
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     description: string;
 
-    @Column("date")
+    @Column({
+        type: "date",
+        nullable: true
+    })
     birthdayDate: Date;
 
     @Column()
     @IsNotEmpty()
     role: string;
 
+    @Column({
+        default: true
+    })
+    isEnabled: boolean
+
+    @Column()
     @CreateDateColumn()
     createdAt: Date;
 
+    @Column()
     @UpdateDateColumn()
     updatedAt: Date;
+
+    hashPassword() {
+        this.password = bcrypt.hashSync(this.password, 8);
+    }
+
+    checkPlainPasswordValid(plainPassword: string) {
+        return bcrypt.compareSync(plainPassword, this.password);
+    }
 }
