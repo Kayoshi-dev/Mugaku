@@ -1,4 +1,4 @@
-# client
+# mugaku-client
 
 ## Build Setup
 
