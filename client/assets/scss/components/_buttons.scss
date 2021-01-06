@@ -1,0 +1,3 @@
+.flat-shadow-button {
+  @include flat-shadow-button($shadow-opacity, $black);
+}

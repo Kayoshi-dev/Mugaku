@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+// 1. Functions, variables and helpers
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins';
+
+// 2. Base files
+@import
+  'base/fonts',
+  'base/helpers';
+
+// 3. Components
+@import
+  'components/buttons',
+  'components/input';
+
+// 4. Layout related
+@import
+  'layout/header',
+  'layout/footer';

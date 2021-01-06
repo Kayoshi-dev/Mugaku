@@ -1,0 +1,8 @@
+@mixin flat-input($text-color: #2c3e50, $bg-color: white, $font-size: 14px) {
+  font-size: $font-size;
+  color: $text-color;
+  background-color: $background-input-grey;
+  border: 0;
+  box-shadow: none;
+  border-radius: 12px;
+}
